@@ -27,8 +27,8 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - -filename ${{ inputs.filename }}
-    - -target ${{ inputs.target }}
+    - filename ${{ inputs.filename }}
+    - target ${{ inputs.target }}
     - -style ${{ inputs.style }}
     - -yellow ${{ inputs.yellow }}
     - -green ${{ inputs.green }}
