@@ -1,0 +1,34 @@
+# action.yml
+name: 'go-coverage-badger'
+description: 'Generate coverage badge from a Go coverage rapport'
+inputs:
+  filename:
+    description: 'File containing the tests output'
+    required: false
+    default: 'coverage.out'
+  target:
+    description: 'target svg file'
+    required: false
+    default: 'coverage.svg'
+  style:
+    description: 'style of badge: flat|plastic|square'
+    required: false
+    default: 'plastic'
+  yellow:
+    description: 'At what percentage does the badge becomes yellow instead of red'
+    required: false
+    default: '30'
+  green:
+    description: 'At what percentage does the badge becomes green instead of yellow'
+    required: false
+    default: '70'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - -filename ${{ inputs.filename }}
+    - -target ${{ inputs.target }}
+    - -style ${{ inputs.style }}
+    - -yellow ${{ inputs.yellow }}
+    - -green ${{ inputs.green }}
